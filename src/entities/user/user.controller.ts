@@ -11,10 +11,11 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
+import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController {
-  constructor() {}
+  constructor(private readonly userService: UserService) {}
 
   @Get('/')
   async getAllUsers(@Req() req: Request, @Res() res: Response) {}
@@ -25,7 +26,7 @@ export class UserController {
   @Post('/')
   //   @UseInterceptors(FileInterceptor(''))
   async createUser(@Req() req: Request, @Res() res: Response) {
-    console.log(req.body);
+    await this.userService.createUser(req.body);
     return res.send({ status: 'ok' });
   }
 
