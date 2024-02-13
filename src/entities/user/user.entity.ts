@@ -6,14 +6,8 @@ export class User {
   @PrimaryColumn()
   id: number;
 
-  @Column({ name: 'Login', type: 'varchar' })
-  login: string;
-
   @Column({ name: 'email', type: 'varchar' })
   email: string;
-
-  @Column({ name: 'phone', type: 'varchar' })
-  phone: string;
 
   @Column({ name: 'password', type: 'varchar' })
   password: string;
@@ -24,22 +18,9 @@ export class User {
   @Column({ name: 'name_last', type: 'varchar' })
   nameLast: string;
 
-  @Column({ name: 'name_patronymic', type: 'varchar', nullable: true })
-  namePatronymic: string;
-
-  @Column({ name: 'display_name', type: 'varchar', nullable: true })
-  displayName: string;
-
   @Column({ name: 'birth_date', type: 'timestamp', nullable: true })
   birthDate: Date;
 
   @Column({ name: 'gender', type: 'enum', enum: E_Gender, nullable: true })
   gender: E_Gender | null;
-
-  @Column({
-    name: 'is_cookies_accepted',
-    type: 'boolean',
-    default: false,
-  })
-  isCookiesAccepted: boolean;
 }
